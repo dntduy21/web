@@ -12,7 +12,6 @@ if (isset($_SESSION['user_id'])) {
 };
 
 if (isset($_POST['submit'])) {
-
    $name = $_POST['name'];
    $name = filter_var($name, FILTER_SANITIZE_STRING);
    $number = $_POST['number'];
@@ -28,7 +27,6 @@ if (isset($_POST['submit'])) {
 
    $check_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
    $check_cart->execute([$user_id]);
-
    if ($check_cart->rowCount() > 0) {
 
       if ($address == '') {
@@ -41,15 +39,24 @@ if (isset($_POST['submit'])) {
          $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
          $delete_cart->execute([$user_id]);
 
-         $message[] = 'đơn hàng đã được đặt thành công!';
+         $stmt = $conn->prepare("SELECT id FROM `orders` WHERE user_id = ? ORDER BY id DESC LIMIT 1;");
+         $stmt->execute([$user_id]);
+
+         $order_id = $stmt->fetch(PDO::FETCH_ASSOC)['id'];
+
+         $message[] = "Mã đơn hàng mới là: " . $order_id;
+         if ($method === "VNPAY") {
+            header("Location: /clothes/web/1/vnpay.php?order_id={$order_id}&amount={$total_price}");
+            exit();
+         }
       }
    } else {
       $message[] = 'giỏ hàng của bạn trống';
    }
 }
 
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -130,9 +137,8 @@ if (isset($_POST['submit'])) {
             <select name="method" class="box" required>
                <option value="" disabled selected>chọn phương thức thanh toán --</option>
                <option value="COD">COD</option>
-               <option value="MOMO">MOMO</option>
-               <option value="Ngân hàng">Ngân hàng</option>
-               <option value="Shopee pay">Shopee pay</option>
+               <option value="VNPAY">VNPAY</option>
+
             </select>
             <input type="submit" value="đặt hàng" class="btn <?php if ($fetch_profile['address'] == '') {
                                                                   echo 'disabled';

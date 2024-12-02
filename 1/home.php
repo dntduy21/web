@@ -41,7 +41,7 @@ include 'components/add_cart.php';
 
          <div class="swiper-wrapper">
 
-            <div class="swiper-slide slide">
+            <div class="swiper-slide slide" data-swiper-autoplay="2000">
                <div class="content">
                   <span>mua hàng online</span>
                   <h3>Levents® Baseball Jersey</h3>
@@ -52,7 +52,7 @@ include 'components/add_cart.php';
                </div>
             </div>
 
-            <div class="swiper-slide slide">
+            <div class="swiper-slide slide" data-swiper-autoplay="2000">
                <div class="content">
                   <span>mua hàng online</span>
                   <h3>Levents® Flowers Window Tee</h3>
@@ -63,7 +63,7 @@ include 'components/add_cart.php';
                </div>
             </div>
 
-            <div class="swiper-slide slide">
+            <div class="swiper-slide slide" data-swiper-autoplay="2000">
                <div class="content">
                   <span>mua hàng online</span>
                   <h3>Levents® Dolphin Tee</h3>
@@ -135,7 +135,7 @@ include 'components/add_cart.php';
                   <a href="category.php?category=<?= $fetch_products['category']; ?>" class="cat"><?= $fetch_products['category']; ?></a>
                   <div class="name"><?= $fetch_products['name']; ?></div>
                   <div class="flex">
-                     <div class="price"><span>$</span><?= $fetch_products['price']; ?></div>
+                     <div class="price"><?= $fetch_products['price']; ?><span>vnd</span></div>
                      <input type="number" name="qty" class="qty" min="1" max="99" value="1" maxlength="2">
                   </div>
                </form>
@@ -164,7 +164,8 @@ include 'components/add_cart.php';
       var swiper = new Swiper(".hero-slider", {
          loop: true,
          grabCursor: true,
-         effect: "flip",
+         autoplay: true,
+         effect: "slide",
          pagination: {
             el: ".swiper-pagination",
             clickable: true,

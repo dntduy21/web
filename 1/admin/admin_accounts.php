@@ -8,13 +8,21 @@ $admin_id = $_SESSION['admin_id'];
 
 if (!isset($admin_id)) {
    header('location:admin_login.php');
+   exit();
 }
 
 if (isset($_GET['delete'])) {
    $delete_id = $_GET['delete'];
-   $delete_admin = $conn->prepare("DELETE FROM `admin` WHERE id = ?");
-   $delete_admin->execute([$delete_id]);
-   header('location:admin_accounts.php');
+
+   // Kiểm tra xem admin có đang cố gắng xóa chính tài khoản của mình hay không
+   if ($delete_id == $admin_id) {
+      echo "<script>alert('Bạn không thể xóa tài khoản của chính mình!');</script>";
+   } else {
+      // Tiến hành xóa tài khoản admin
+      $delete_admin = $conn->prepare("DELETE FROM `admin` WHERE id = ?");
+      $delete_admin->execute([$delete_id]);
+      header('location:admin_accounts.php');
+   }
 }
 
 ?>

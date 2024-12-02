@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400..900&display=swap');
 :root {
    --main-color: #4834d4;
    --red: #e74c3c;
@@ -220,6 +219,7 @@ section {
    margin: 0 1rem;
    font-size: 2rem;
    color: var(--light-color);
+   text-transform: uppercase;
 }
 
 .header .flex .navbar a:hover {

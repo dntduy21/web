@@ -36,7 +36,7 @@ include 'components/add_cart.php';
 
    <section class="quick-view">
 
-      <h1 class="title">xem nhanh</h1>
+      <h1 class="title">Xem nhanh</h1>
 
       <?php
       $pid = $_GET['pid'];
@@ -54,10 +54,10 @@ include 'components/add_cart.php';
                <a href="category.php?category=<?= $fetch_products['category']; ?>" class="cat"><?= $fetch_products['category']; ?></a>
                <div class="name"><?= $fetch_products['name']; ?></div>
                <div class="flex">
-                  <div class="price"><span>$</span><?= $fetch_products['price']; ?></div>
+                  <div class="price"><?= $fetch_products['price']; ?><span>vnd</span></div>
                   <input type="number" name="qty" class="qty" min="1" max="99" value="1" maxlength="2">
                </div>
-               <button type="submit" name="add_to_cart" class="cart-btn">thêm vào giỏ hàng</button>
+               <button type="submit" name="add_to_cart" class="cart-btn">Thêm vào giỏ hàng</button>
             </form>
       <?php
          }

@@ -55,7 +55,7 @@ if (!isset($admin_id)) {
                $total_pendings += $fetch_pendings['total_price'];
             }
             ?>
-            <h3><span>$</span><?= $total_pendings; ?><span>/-</span></h3>
+            <h3><span></span><?= $total_pendings; ?><span>vnđ</span></h3>
             <p>đơn đang chờ xử lý</p>
             <a href="placed_orders.php" class="btn">xem đơn đặt hàng</a>
          </div>
@@ -69,7 +69,7 @@ if (!isset($admin_id)) {
                $total_completes += $fetch_completes['total_price'];
             }
             ?>
-            <h3><span>$</span><?= $total_completes; ?><span>/-</span></h3>
+            <h3><span></span><?= $total_completes; ?><span>vnđ</span></h3>
             <p>đơn hoàn thành</p>
             <a href="placed_orders.php" class="btn">xem đơn đặt hàng</a>
          </div>

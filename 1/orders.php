@@ -11,6 +11,9 @@ if (isset($_SESSION['user_id'])) {
    header('location:home.php');
 };
 
+if (isset($_GET['msg']) && $_GET['msg'] !== ""){
+   $message[] = $_GET["msg"];
+} 
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +66,7 @@ if (isset($_SESSION['user_id'])) {
                      <p>địa chỉ : <span><?= $fetch_orders['address']; ?></span></p>
                      <p>phương thức thanh toán : <span><?= $fetch_orders['method']; ?></span></p>
                      <p>đơn đặt hàng của bạn : <span><?= $fetch_orders['total_products']; ?></span></p>
-                     <p>tổng tiền : <span>$<?= $fetch_orders['total_price']; ?>/-</span></p>
+                     <p>tổng tiền : <span><?= $fetch_orders['total_price']; ?>vnđ</span></p>
                      <p> trạng thái thanh toán : <span style="color:<?php if ($fetch_orders['payment_status'] == 'pending') {
                                                                         echo 'red';
                                                                      } else {
