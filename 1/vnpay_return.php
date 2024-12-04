@@ -41,7 +41,7 @@ $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
 $vnpTranId = $inputData['vnp_TransactionNo']; //Mã giao dịch tại VNPAY
 $vnp_BankCode = $inputData['vnp_BankCode']; //Ngân hàng thanh toán
 $vnp_Amount = $inputData['vnp_Amount'] / 100; // Số tiền thanh toán VNPAY phản hồi
-
+$vnp_ResponseCode = $inputData['vnp_ResponseCode'];
 $Status = 0; // Là trạng thái thanh toán của giao dịch chưa có IPN lưu tại hệ thống của merchant chiều khởi tạo
 $orderId = $inputData['vnp_TxnRef'];
 $message;
@@ -56,9 +56,28 @@ try {
         $stmt = $conn->prepare("SELECT * FROM `orders` WHERE id = ?");
         $stmt->execute([$orderId]);
         $order = $stmt->fetch();
-        var_dump($order);
         if ($order != NULL) {
-            if ($order["total_price"] == $vnp_Amount) //Kiểm tra số tiền thanh toán của giao dịch: giả sử số tiền
+            if($vnp_ResponseCode !== "00"){
+                $error_codes = [
+                    "00" => "Giao dịch thành công",
+                    "07" => "Trừ tiền thành công. Giao dịch bị nghi ngờ (liên quan tới lừa đảo, giao dịch bất thường).",
+                    "09" => "Giao dịch không thành công do: Thẻ/Tài khoản của khách hàng chưa đăng ký dịch vụ InternetBanking tại ngân hàng.",
+                    "10" => "Giao dịch không thành công do: Khách hàng xác thực thông tin thẻ/tài khoản không đúng quá 3 lần.",
+                    "11" => "Giao dịch không thành công do: Đã hết hạn chờ thanh toán. Xin quý khách vui lòng thực hiện lại giao dịch.",
+                    "12" => "Giao dịch không thành công do: Thẻ/Tài khoản của khách hàng bị khóa.",
+                    "13" => "Giao dịch không thành công do Quý khách nhập sai mật khẩu xác thực giao dịch (OTP). Xin quý khách vui lòng thực hiện lại giao dịch.",
+                    "24" => "Giao dịch không thành công do: Khách hàng hủy giao dịch.",
+                    "51" => "Giao dịch không thành công do: Tài khoản của quý khách không đủ số dư để thực hiện giao dịch.",
+                    "65" => "Giao dịch không thành công do: Tài khoản của Quý khách đã vượt quá hạn mức giao dịch trong ngày.",
+                    "75" => "Ngân hàng thanh toán đang bảo trì.",
+                    "79" => "Giao dịch không thành công do: KH nhập sai mật khẩu thanh toán quá số lần quy định. Xin quý khách vui lòng thực hiện lại giao dịch.",
+                    "99" => "Các lỗi khác."
+                ];
+                //xử lý mã lỗi
+                $message = $error_codes[$vnp_ResponseCode];
+
+            }
+            else if ($order["total_price"] == $vnp_Amount) //Kiểm tra số tiền thanh toán của giao dịch: giả sử số tiền
             {
                 if ($order["payment_status"] == "pending") {
                     $stmtUpdate = $conn->prepare("UPDATE `orders` SET `payment_status` = 'paid' WHERE id = ?");

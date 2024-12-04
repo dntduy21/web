@@ -62,7 +62,7 @@ include 'components/add_cart.php';
       <?php
          }
       } else {
-         echo '<p class="empty">chưa có sản phẩm nào được thêm vào!</p>';
+         echo '<p class="empty">Chưa có sản phẩm nào được thêm vào!</p>';
       }
       ?>
 

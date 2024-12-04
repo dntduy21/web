@@ -21,7 +21,7 @@ include 'components/add_cart.php';
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>trang tìm kiếm</title>
+   <title>Trang tìm kiếm</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -40,7 +40,7 @@ include 'components/add_cart.php';
 
    <section class="search-form">
       <form method="post" action="">
-         <input type="text" name="search_box" placeholder="nhập sản phẩm..." class="box">
+         <input type="text" name="search_box" placeholder="Nhập tên sản phẩm..." class="box">
          <button type="submit" name="search_btn" class="fas fa-search"></button>
       </form>
    </section>
@@ -70,14 +70,14 @@ include 'components/add_cart.php';
                      <a href="category.php?category=<?= $fetch_products['category']; ?>" class="cat"><?= $fetch_products['category']; ?></a>
                      <div class="name"><?= $fetch_products['name']; ?></div>
                      <div class="flex">
-                        <div class="price"><?= $fetch_products['price']; ?><<span>vnd</span>/div>
+                        <div class="price"><?= $fetch_products['price']; ?><span>vnd</span></div>
                         <input type="number" name="qty" class="qty" min="1" max="99" value="1" maxlength="2">
                      </div>
                   </form>
          <?php
                }
             } else {
-               echo '<p class="empty">không có sản phẩm phù hợp!</p>';
+               echo '<p class="empty">Không có sản phẩm phù hợp!</p>';
             }
          }
          ?>

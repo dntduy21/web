@@ -18,12 +18,12 @@ if (isset($message)) {
       <a href="dashboard.php" class="logo">Admin<span>Panel</span></a>
 
       <nav class="navbar">
-         <a href="dashboard.php">trang chủ</a>
-         <a href="products.php">các sản phẩm</a>
-         <a href="placed_orders.php">đơn đặt hàng</a>
-         <a href="admin_accounts.php">admins</a>
-         <a href="users_accounts.php">users</a>
-         <a href="messages.php">tin nhắn</a>
+         <a href="dashboard.php">Trang chủ</a>
+         <a href="products.php">Các sản phẩm</a>
+         <a href="placed_orders.php">Đơn đặt hàng</a>
+         <a href="admin_accounts.php">Admins</a>
+         <a href="users_accounts.php">Users</a>
+         <a href="messages.php">Tin nhắn</a>
       </nav>
 
       <div class="icons">
@@ -38,12 +38,12 @@ if (isset($message)) {
          $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
          ?>
          <p><?= $fetch_profile['name']; ?></p>
-         <a href="update_profile.php" class="btn">cập nhật hồ sơ</a>
+         <a href="update_profile.php" class="btn">Cập nhật hồ sơ</a>
          <div class="flex-btn">
-            <a href="admin_login.php" class="option-btn">đăng nhập</a>
-            <a href="register_admin.php" class="option-btn">đăng ký</a>
+            <a href="admin_login.php" class="option-btn">Đăng nhập</a>
+            <a href="register_admin.php" class="option-btn">Đăng ký</a>
          </div>
-         <a href="../components/admin_logout.php" onclick="return confirm('đăng xuất khỏi trang web này?');" class="delete-btn">đăng xuất</a>
+         <a href="../components/admin_logout.php" onclick="return confirm('Đăng xuất khỏi trang web này?');" class="delete-btn">Đăng xuất</a>
       </div>
 
    </section>

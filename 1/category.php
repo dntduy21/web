@@ -21,7 +21,7 @@ include 'components/add_cart.php';
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>danh mục</title>
+   <title>Danh mục</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -36,16 +36,17 @@ include 'components/add_cart.php';
 
    <section class="products">
 
-      <h1 class="title">danh mục</h1>
+      <h1 class="title">Danh mục</h1>
 
       <div class="box-container">
-
          <?php
          $category = $_GET['category'];
          $select_products = $conn->prepare("SELECT * FROM `products` WHERE category = ?");
          $select_products->execute([$category]);
+
          if ($select_products->rowCount() > 0) {
-            while ($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)) {
+            $fetch_products_list = $select_products->fetchAll(PDO::FETCH_ASSOC); // Lấy tất cả dữ liệu vào mảng
+            foreach ($fetch_products_list as $fetch_products) { // Lặp qua từng phần tử trong mảng
          ?>
                <form action="" method="post" class="box">
                   <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
@@ -64,10 +65,9 @@ include 'components/add_cart.php';
          <?php
             }
          } else {
-            echo '<p class="empty">chưa có sản phẩm nào được thêm vào!</p>';
+            echo '<p class="empty">Chưa có sản phẩm nào được thêm vào!</p>';
          }
          ?>
-
       </div>
 
    </section>

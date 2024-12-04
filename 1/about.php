@@ -37,8 +37,8 @@ if (isset($_SESSION['user_id'])) {
    <!-- header  -->
 
    <div class="heading">
-      <h3>về chúng tôi</h3>
-      <p><a href="home.php">trang chủ</a> <span> / về chúng tôi</span></p>
+      <h3>Về chúng tôi</h3>
+      <p><a href="home.php">Trang chủ</a> <span> / Về chúng tôi</span></p>
    </div>
 
    <!-- about  -->
@@ -52,9 +52,9 @@ if (isset($_SESSION['user_id'])) {
          </div>
 
          <div class="content">
-            <h3>tại sao chọn chúng tôi?</h3>
+            <h3>Tại sao chọn chúng tôi?</h3>
             <p>Chọn chúng tôi vì chất lượng sản phẩm cao cấp, dịch vụ chăm sóc khách hàng tận tâm, chính sách đổi trả linh hoạt và giá cả cạnh tranh, mang lại trải nghiệm mua sắm tuyệt vời.</p>
-            <a href="product.php" class="btn">sản phẩm</a>
+            <a href="product.php" class="btn">Sản phẩm</a>
          </div>
 
       </div>
@@ -67,28 +67,26 @@ if (isset($_SESSION['user_id'])) {
 
    <section class="steps">
 
-      <h1 class="title">các bước đặt hàng</h1>
+      <h1 class="title">Các bước đặt hàng</h1>
 
       <div class="box-container">
-
          <div class="box">
-            <img src="images/step-1.png" alt="">
-            <h3>chọn sản phẩm</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, dolorem.</p>
+            <img src="images/step-1.png" alt="Chọn sản phẩm">
+            <h3>Chọn sản phẩm</h3>
+            <p>Khám phá danh mục đa dạng với nhiều sản phẩm chất lượng cao, phù hợp với nhu cầu của bạn.</p>
          </div>
 
          <div class="box">
-            <img src="images/step-2.png" alt="">
-            <h3>giao hàng</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, dolorem.</p>
+            <img src="images/step-2.png" alt="Giao hàng">
+            <h3>Giao hàng</h3>
+            <p>Đặt hàng và chúng tôi sẽ giao tận nơi nhanh chóng, an toàn và đúng thời gian.</p>
          </div>
 
          <div class="box">
-            <img src="images/step-3.png" alt="">
-            <h3>nhận sản phẩm</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, dolorem.</p>
+            <img src="images/step-3.png" alt="Nhận sản phẩm">
+            <h3>Nhận sản phẩm</h3>
+            <p>Nhận sản phẩm tại nhà, kiểm tra và tận hưởng chất lượng tuyệt vời từ dịch vụ của chúng tôi.</p>
          </div>
-
       </div>
 
    </section>
@@ -99,15 +97,27 @@ if (isset($_SESSION['user_id'])) {
 
    <section class="reviews">
 
-      <h1 class="title">đánh giá của khách hàng</h1>
+      <h1 class="title">Đánh giá của khách hàng</h1>
 
       <div class="swiper reviews-slider">
 
          <div class="swiper-wrapper">
+            <div class="swiper-slide slide">
+               <img src="images/pic-1.png" alt="Đánh giá của Anh Minh">
+               <p>Dịch vụ tuyệt vời, sản phẩm đúng mô tả và chất lượng cao. Mình rất hài lòng khi mua hàng tại đây!</p>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+               </div>
+               <h3>Minh</h3>
+            </div>
 
             <div class="swiper-slide slide">
-               <img src="images/pic-1.png" alt="">
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos voluptate eligendi laborum molestias ut earum nulla sint voluptatum labore nemo.</p>
+               <img src="images/pic-2.png" alt="Đánh giá của Chị Lan">
+               <p>Giao hàng nhanh chóng, nhân viên thân thiện và hỗ trợ nhiệt tình. Tôi sẽ tiếp tục ủng hộ!</p>
                <div class="stars">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
@@ -115,12 +125,25 @@ if (isset($_SESSION['user_id'])) {
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
                </div>
-               <h3>Duy</h3>
+               <h3>Lan</h3>
             </div>
 
             <div class="swiper-slide slide">
-               <img src="images/pic-2.png" alt="">
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos voluptate eligendi laborum molestias ut earum nulla sint voluptatum labore nemo.</p>
+               <img src="images/pic-3.png" alt="Đánh giá của Anh Hoàng">
+               <p>Sản phẩm đẹp, chất lượng tốt. Tôi rất hài lòng về dịch vụ chăm sóc khách hàng.</p>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+               </div>
+               <h3>Hoàng</h3>
+            </div>
+
+            <div class="swiper-slide slide">
+               <img src="images/pic-4.png" alt="Đánh giá của Chị Mai">
+               <p>Giá cả hợp lý, sản phẩm đúng chuẩn. Tôi sẽ giới thiệu đến bạn bè và gia đình.</p>
                <div class="stars">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
@@ -128,12 +151,25 @@ if (isset($_SESSION['user_id'])) {
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
                </div>
-               <h3>Duy</h3>
+               <h3>Mai</h3>
             </div>
 
             <div class="swiper-slide slide">
-               <img src="images/pic-3.png" alt="">
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos voluptate eligendi laborum molestias ut earum nulla sint voluptatum labore nemo.</p>
+               <img src="images/pic-5.png" alt="Đánh giá của Anh Tùng">
+               <p>Dịch vụ rất tốt, sản phẩm giao đúng hẹn. Đây là nơi mua sắm đáng tin cậy!</p>
+               <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+               </div>
+               <h3>Tùng</h3>
+            </div>
+
+            <div class="swiper-slide slide">
+               <img src="images/pic-6.png" alt="Đánh giá của Chị Hương">
+               <p>Chất lượng sản phẩm tuyệt vời, giao hàng nhanh và đúng giờ. Cảm ơn shop!</p>
                <div class="stars">
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
@@ -141,53 +177,11 @@ if (isset($_SESSION['user_id'])) {
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
                </div>
-               <h3>Duy</h3>
+               <h3>Hương</h3>
             </div>
-
-            <div class="swiper-slide slide">
-               <img src="images/pic-4.png" alt="">
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos voluptate eligendi laborum molestias ut earum nulla sint voluptatum labore nemo.</p>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
-               <h3>Duy</h3>
-            </div>
-
-            <div class="swiper-slide slide">
-               <img src="images/pic-5.png" alt="">
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos voluptate eligendi laborum molestias ut earum nulla sint voluptatum labore nemo.</p>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
-               <h3>Duy</h3>
-            </div>
-
-            <div class="swiper-slide slide">
-               <img src="images/pic-6.png" alt="">
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos voluptate eligendi laborum molestias ut earum nulla sint voluptatum labore nemo.</p>
-               <div class="stars">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
-               </div>
-               <h3>Duy</h3>
-            </div>
+            <div class="swiper-pagination"></div>
 
          </div>
-
-         <div class="swiper-pagination"></div>
-
-      </div>
 
    </section>
 

@@ -11,14 +11,14 @@
 
       <div class="box">
          <img src="images/clock-icon.png" alt="">
-         <h3>thời gian mở cửa</h3>
+         <h3>Thời gian mở cửa</h3>
          <p>00:07am to 00:10pm</p>
       </div>
 
       <div class="box">
          <img src="images/map-icon.png" alt="">
-         <h3>địa chỉ</h3>
-         <a href="#">TP. Hồ Chí Minh, Việt Nam</a>
+         <h3>Địa chỉ</h3>
+         <a href="#">Cao Lỗ, Q8, TP. Hồ Chí Minh, Việt Nam</a>
       </div>
 
       <div class="box">

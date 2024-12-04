@@ -15,13 +15,13 @@ if (isset($_POST['delete'])) {
    $cart_id = $_POST['cart_id'];
    $delete_cart_item = $conn->prepare("DELETE FROM `cart` WHERE id = ?");
    $delete_cart_item->execute([$cart_id]);
-   $message[] = 'mục giỏ hàng đã bị xóa!';
+   $message[] = 'Mục giỏ hàng đã bị xóa!';
 }
 
 if (isset($_POST['delete_all'])) {
    $delete_cart_item = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
    $delete_cart_item->execute([$user_id]);
-   $message[] = 'đã xóa tất cả khỏi giỏ hàng!';
+   $message[] = 'Đã xóa tất cả khỏi giỏ hàng!';
 }
 
 if (isset($_POST['update_qty'])) {
@@ -30,7 +30,7 @@ if (isset($_POST['update_qty'])) {
    $qty = filter_var($qty, FILTER_SANITIZE_STRING);
    $update_qty = $conn->prepare("UPDATE `cart` SET quantity = ? WHERE id = ?");
    $update_qty->execute([$qty, $cart_id]);
-   $message[] = 'số lượng giỏ hàng được cập nhật';
+   $message[] = 'Số lượng giỏ hàng được cập nhật';
 }
 
 $grand_total = 0;
@@ -44,7 +44,7 @@ $grand_total = 0;
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>giỏ hàng</title>
+   <title>Giỏ hàng</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -60,29 +60,30 @@ $grand_total = 0;
    <!-- header -->
 
    <div class="heading">
-      <h3>giỏ hàng</h3>
-      <p><a href="home.php">trang chủ</a> <span> / giỏ hàng</span></p>
+      <h3>Giỏ hàng</h3>
+      <p><a href="home.php">Trang chủ</a> <span> / Giỏ hàng</span></p>
    </div>
 
    <!-- shopping cart   -->
 
    <section class="products">
 
-      <h1 class="title">giỏ hàng của bạn</h1>
+      <h1 class="title">Giỏ hàng của bạn</h1>
 
       <div class="box-container">
-
          <?php
          $grand_total = 0;
          $select_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
          $select_cart->execute([$user_id]);
+
          if ($select_cart->rowCount() > 0) {
-            while ($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)) {
+            $fetch_cart_list = $select_cart->fetchAll(PDO::FETCH_ASSOC); // Lấy tất cả dữ liệu vào mảng
+            foreach ($fetch_cart_list as $fetch_cart) { // Duyệt qua từng phần tử trong mảng
          ?>
                <form action="" method="post" class="box">
                   <input type="hidden" name="cart_id" value="<?= $fetch_cart['id']; ?>">
                   <a href="quick_view.php?pid=<?= $fetch_cart['pid']; ?>" class="fas fa-eye"></a>
-                  <button type="submit" class="fas fa-times" name="delete" onclick="return confirm('xóa mục này?');"></button>
+                  <button type="submit" class="fas fa-times" name="delete" onclick="return confirm('Xóa mục này?');"></button>
                   <img src="uploaded_img/<?= $fetch_cart['image']; ?>" alt="">
                   <div class="name"><?= $fetch_cart['name']; ?></div>
                   <div class="flex">
@@ -90,28 +91,27 @@ $grand_total = 0;
                      <input type="number" name="qty" class="qty" min="1" max="99" value="<?= $fetch_cart['quantity']; ?>" maxlength="2">
                      <button type="submit" class="fas fa-edit" name="update_qty"></button>
                   </div>
-                  <div class="sub-total"> phụ thu : <span><?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?>vnđ</span> </div>
+                  <div class="sub-total"> Phụ thu : <span><?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?>vnđ</span> </div>
                </form>
          <?php
                $grand_total += $sub_total;
             }
          } else {
-            echo '<p class="empty">giỏ hàng của bạn trống</p>';
+            echo '<p class="empty">Giỏ hàng của bạn trống</p>';
          }
          ?>
-
       </div>
 
       <div class="cart-total">
-         <p>tổng đơn hàng : <span><?= $grand_total; ?>vnđ</span></p>
-         <a href="checkout.php" class="btn <?= ($grand_total > 1) ? '' : 'disabled'; ?>">tiến hành thanh toán</a>
+         <p>Tổng đơn hàng : <span><?= $grand_total; ?>vnđ</span></p>
+         <a href="checkout.php" class="btn <?= ($grand_total > 1) ? '' : 'disabled'; ?>">Tiến hành thanh toán</a>
       </div>
 
       <div class="more-btn">
          <form action="" method="post">
-            <button type="submit" class="delete-btn <?= ($grand_total > 1) ? '' : 'disabled'; ?>" name="delete_all" onclick="return confirm('xóa tất cả khỏi giỏ hàng?');">xoá tất cả</button>
+            <button type="submit" class="delete-btn <?= ($grand_total > 1) ? '' : 'disabled'; ?>" name="delete_all" onclick="return confirm('Xóa tất cả khỏi giỏ hàng?');">Xoá tất cả</button>
          </form>
-         <a href="product.php" class="btn">tiếp tục mua sắm</a>
+         <a href="product.php" class="btn">Tiếp tục mua sắm</a>
       </div>
 
    </section>

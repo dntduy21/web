@@ -18,9 +18,9 @@ if (isset($_POST['submit'])) {
    $email = filter_var($email, FILTER_SANITIZE_STRING);
    $number = $_POST['number'];
    $number = filter_var($number, FILTER_SANITIZE_STRING);
-   $pass = sha1($_POST['pass']);
+   $pass = $_POST['pass'];
    $pass = filter_var($pass, FILTER_SANITIZE_STRING);
-   $cpass = sha1($_POST['cpass']);
+   $cpass = $_POST['cpass'];
    $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
    $address = $_POST['address'];
    $address = filter_var($address, FILTER_SANITIZE_STRING);
@@ -30,16 +30,21 @@ if (isset($_POST['submit'])) {
       $select_user->execute([$email, $number]);
 
       if ($select_user->rowCount() > 0) {
-         $message[] = 'email or number already exists!';
+         $message[] = 'Email hoặc số điện thoại đã được sử dụng!';
       } else {
-         if ($pass != $cpass) {
-            $message[] = 'confirm password not matched!';
+         $pattern = "/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$/";
+
+         if(!preg_match($pattern, $pass)){
+            $message[] = "Mật khẩu phải có ít nhất 8 ký tự, trong đó ít nhất 1 ký tự số, 1 ký tự thường,1 ký tự hoa";
+         }
+         else if ($pass != $cpass) {
+            $message[] = 'Mật khẩu không khớp!';
          } else {
             $insert_user = $conn->prepare("INSERT INTO `users` (name, email, number, password, address) VALUES (?, ?, ?, ?, ?)");
-            $insert_user->execute([$name, $email, $number, $pass, $address]);
+            $insert_user->execute([$name, $email, $number, sha1($pass), $address]);
 
             $select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ? AND password = ?");
-            $select_user->execute([$email, $pass]);
+            $select_user->execute([$email, sha1($pass)]);
             $row = $select_user->fetch(PDO::FETCH_ASSOC);
             if ($select_user->rowCount() > 0) {
                $_SESSION['user_id'] = $row['id'];

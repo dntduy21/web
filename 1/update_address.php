@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
    $update_address = $conn->prepare("UPDATE `users` set address = ? WHERE id = ?");
    $update_address->execute([$address, $user_id]);
 
-   $message[] = 'đã lưu địa chỉ';
+   $message[] = 'Đã lưu địa chỉ';
 }
 
 ?>
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>cập nhật địa chỉ</title>
+   <title>Cập nhật địa chỉ</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -47,14 +47,14 @@ if (isset($_POST['submit'])) {
    <section class="form-container">
 
       <form action="" method="post">
-         <h3>cập nhật địa chỉ</h3>
-         <input type="text" class="box" placeholder="tên đường" required maxlength="50" name="street">
-         <input type="text" class="box" placeholder="tên phường" required maxlength="50" name="ward">
-         <input type="text" class="box" placeholder="tên quận" required maxlength="50" name="district">
-         <input type="text" class="box" placeholder="tên thành phố" required maxlength="50" name="city">
-         <input type="text" class="box" placeholder="tên nước" required maxlength="50" name="country">
-         <input type="number" class="box" placeholder="mã cod" required max="999999" min="0" maxlength="6" name="cod_code">
-         <input type="submit" value="lưu địa chỉ" name="submit" class="btn">
+         <h3>Cập nhật địa chỉ</h3>
+         <input type="text" class="box" placeholder="Tên đường" required maxlength="50" name="street">
+         <input type="text" class="box" placeholder="Tên phường" required maxlength="50" name="ward">
+         <input type="text" class="box" placeholder="Tên quận" required maxlength="50" name="district">
+         <input type="text" class="box" placeholder="Tên thành phố" required maxlength="50" name="city">
+         <input type="text" class="box" placeholder="Tên nước" required maxlength="50" name="country">
+         <input type="number" class="box" placeholder="Mã cod" required max="999999" min="0" maxlength="6" name="cod_code">
+         <input type="submit" value="Lưu địa chỉ" name="submit" class="btn">
       </form>
 
    </section>

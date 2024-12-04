@@ -43,9 +43,9 @@ include 'components/add_cart.php';
 
             <div class="swiper-slide slide" data-swiper-autoplay="2000">
                <div class="content">
-                  <span>mua hàng online</span>
+                  <span>Mua hàng online</span>
                   <h3>Levents® Baseball Jersey</h3>
-                  <a href="product.php" class="btn">xem sản phẩm</a>
+                  <a href="product.php" class="btn">Xem sản phẩm</a>
                </div>
                <div class="image">
                   <img src="images/home-img-1.png" alt="">
@@ -54,9 +54,9 @@ include 'components/add_cart.php';
 
             <div class="swiper-slide slide" data-swiper-autoplay="2000">
                <div class="content">
-                  <span>mua hàng online</span>
+                  <span>Mua hàng online</span>
                   <h3>Levents® Flowers Window Tee</h3>
-                  <a href="product.php" class="btn">xem sản phẩm</a>
+                  <a href="product.php" class="btn">Xem sản phẩm</a>
                </div>
                <div class="image">
                   <img src="images/home-img-2.png" alt="">
@@ -65,9 +65,9 @@ include 'components/add_cart.php';
 
             <div class="swiper-slide slide" data-swiper-autoplay="2000">
                <div class="content">
-                  <span>mua hàng online</span>
+                  <span>Mua hàng online</span>
                   <h3>Levents® Dolphin Tee</h3>
-                  <a href="product.php" class="btn">xem sản phẩm</a>
+                  <a href="product.php" class="btn">Xem sản phẩm</a>
                </div>
                <div class="image">
                   <img src="images/home-img-3.png" alt="">
@@ -122,7 +122,8 @@ include 'components/add_cart.php';
          $select_products = $conn->prepare("SELECT * FROM `products` LIMIT 6");
          $select_products->execute();
          if ($select_products->rowCount() > 0) {
-            while ($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)) {
+            $fetch_products_list = $select_products->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($fetch_products_list as $fetch_products) {
          ?>
                <form action="" method="post" class="box">
                   <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
@@ -145,11 +146,10 @@ include 'components/add_cart.php';
             echo '<p class="empty">chưa có sản phẩm!</p>';
          }
          ?>
-
       </div>
 
       <div class="more-btn">
-         <a href="product.php" class="btn">xem tất cả</a>
+         <a href="product.php" class="btn">Xem tất cả</a>
       </div>
 
    </section>

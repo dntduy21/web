@@ -21,7 +21,7 @@ include 'components/add_cart.php';
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>sản phẩm</title>
+   <title>Sản phẩm</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -37,15 +37,15 @@ include 'components/add_cart.php';
    <!-- header -->
 
    <div class="heading">
-      <h3>sản phẩm của chúng tôi</h3>
-      <p><a href="home.php">trang chủ</a> <span> / sản phẩm</span></p>
+      <h3>Sản phẩm của chúng tôi</h3>
+      <p><a href="home.php">Trang chủ</a> <span> / Sản phẩm</span></p>
    </div>
 
    <!-- product -->
 
    <section class="products">
 
-      <h1 class="title">sản phẩm mới nhất</h1>
+      <h1 class="title">Sản phẩm mới nhất</h1>
 
       <div class="box-container">
 
@@ -53,41 +53,40 @@ include 'components/add_cart.php';
          $select_products = $conn->prepare("SELECT * FROM `products`");
          $select_products->execute();
          if ($select_products->rowCount() > 0) {
-            while ($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)) {
+            $fetch_products = $select_products->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($fetch_products as $product) {
          ?>
                <form action="" method="post" class="box">
-                  <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
-                  <input type="hidden" name="name" value="<?= $fetch_products['name']; ?>">
-                  <input type="hidden" name="price" value="<?= $fetch_products['price']; ?>">
-                  <input type="hidden" name="image" value="<?= $fetch_products['image']; ?>">
-                  <a href="quick_view.php?pid=<?= $fetch_products['id']; ?>" class="fas fa-eye"></a>
+                  <input type="hidden" name="pid" value="<?= $product['id']; ?>">
+                  <input type="hidden" name="name" value="<?= $product['name']; ?>">
+                  <input type="hidden" name="price" value="<?= $product['price']; ?>">
+                  <input type="hidden" name="image" value="<?= $product['image']; ?>">
+                  <a href="quick_view.php?pid=<?= $product['id']; ?>" class="fas fa-eye"></a>
                   <button type="submit" class="fas fa-shopping-cart" name="add_to_cart"></button>
-                  <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
-                  <a href="category.php?category=<?= $fetch_products['category']; ?>" class="cat"><?= $fetch_products['category']; ?></a>
-                  <div class="name"><?= $fetch_products['name']; ?></div>
+                  <img src="uploaded_img/<?= $product['image']; ?>" alt="">
+                  <a href="category.php?category=<?= $product['category']; ?>" class="cat"><?= $product['category']; ?></a>
+                  <div class="name"><?= $product['name']; ?></div>
                   <div class="flex">
-                     <div class="price"><?= $fetch_products['price']; ?><span>vnd</span></div>
-                     <input type="number" name="qty" class="qty" min="1" max="99" value="1" maxlength="2"">
-         </div>
-      </form>
-      <?php
+                     <div class="price"><?= $product['price']; ?><span>vnd</span></div>
+                     <input type="number" name="qty" class="qty" min="1" max="99" value="1" maxlength="2">
+                  </div>
+               </form>
+         <?php
             }
          } else {
-            echo '<p class="empty">chưa có sản phẩm nào được thêm vào!</p>';
+            echo '<p class="empty">Chưa có sản phẩm nào được thêm vào!</p>';
          }
-      ?>
+         ?>
 
-   </div>
+      </div>
 
-</section>
+   </section>
 
-<!-- product -->
+   <!-- footer  -->
+   <?php include 'components/footer.php'; ?>
+   <!-- footer -->
 
-<!-- footer  -->
-<?php include 'components/footer.php'; ?>
-<!-- footer -->
-
-<script src=" js/script.js"></script>
+   <script src=" js/script.js"></script>
 
 </body>
 

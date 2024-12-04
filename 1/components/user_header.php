@@ -18,11 +18,11 @@ if (isset($message)) {
       <a href="home.php" class="logo">Swipe-swipe 😁</a>
 
       <nav class="navbar">
-         <a href="home.php">trang chủ</a>
-         <a href="about.php">về chúng tôi</a>
-         <a href="product.php">sản phẩm</a>
-         <a href="orders.php">đơn hàng</a>
-         <a href="contact.php">liên hệ</a>
+         <a href="home.php">Trang chủ</a>
+         <a href="product.php">Sản phẩm</a>
+         <a href="orders.php">Đơn hàng</a>
+         <a href="about.php">Về chúng tôi</a>
+         <a href="contact.php">Liên hệ</a>
       </nav>
 
       <div class="icons">
@@ -46,18 +46,18 @@ if (isset($message)) {
          ?>
             <p class="name"><?= $fetch_profile['name']; ?></p>
             <div class="flex">
-               <a href="profile.php" class="btn">hồ sơ</a>
-               <a href="components/user_logout.php" onclick="return confirm('đăng xuất khỏi trang web này?');" class="delete-btn">đăng xuất</a>
+               <a href="profile.php" class="btn">Hồ sơ</a>
+               <a href="components/user_logout.php" onclick="return confirm('Đăng xuất khỏi trang web này?');" class="delete-btn">Đăng xuất</a>
             </div>
             <p class="account">
-               <a href="login.php">đăng nhập</a> or
-               <a href="register.php">đăng ký</a>
+               <a href="login.php">Đăng nhập</a> hoặc
+               <a href="register.php">Đăng ký</a>
             </p>
          <?php
          } else {
          ?>
-            <p class="name">vui lòng đăng nhập trước!</p>
-            <a href="login.php" class="btn">đăng nhập</a>
+            <p class="name">Vui lòng đăng nhập trước!</p>
+            <a href="login.php" class="btn">Đăng nhập</a>
          <?php
          }
          ?>

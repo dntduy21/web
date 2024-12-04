@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
       $_SESSION['user_id'] = $row['id'];
       header('location:home.php');
    } else {
-      $message[] = 'tên người dùng hoặc mật khẩu không chính xác!';
+      $message[] = 'Tên người dùng hoặc mật khẩu không chính xác!';
    }
 }
 
@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>đăng nhập</title>
+   <title>Đăng nhập</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -57,8 +57,8 @@ if (isset($_POST['submit'])) {
 
       <form action="" method="post">
          <h3>Đăng nhập</h3>
-         <input type="text" name="email" required placeholder="nhập email" class="box" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
-         <input type="password" name="pass" required placeholder="nhập password" class="box" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
+         <input type="text" name="email" required placeholder="Nhập email" class="box" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
+         <input type="password" name="pass" required placeholder="Nhập password" class="box" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
          <input type="submit" value="ĐĂNG NHẬP" name="submit" class="btn">
          <p>Bạn chưa có tài khoản? <a href="register.php">Đăng kí ngay</a></p>
       </form>
