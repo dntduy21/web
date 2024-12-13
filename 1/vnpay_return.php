@@ -80,8 +80,8 @@ try {
             else if ($order["total_price"] == $vnp_Amount) //Kiểm tra số tiền thanh toán của giao dịch: giả sử số tiền
             {
                 if ($order["payment_status"] == "pending") {
-                    $stmtUpdate = $conn->prepare("UPDATE `orders` SET `payment_status` = 'paid' WHERE id = ?");
-                    $stmtUpdate->execute([$orderId]);
+                    $stmtUpdate = $conn->prepare("UPDATE `orders` SET `payment_status` = 'paid', `transaction_id` = ? WHERE id = ?");
+                    $stmtUpdate->execute([$vnpTranId  ,$orderId]);
                     $message = "Thanh toán thành công";
                     $returnData['RspCode'] = '00';
                     $returnData['Message'] = 'Confirm Success';

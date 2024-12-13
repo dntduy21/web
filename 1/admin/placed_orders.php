@@ -85,15 +85,20 @@ if (isset($_GET['delete'])) {
             while ($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)) {
          ?>
                <div class="box">
-                  <p> user id : <span><?= $fetch_orders['user_id']; ?></span> </p>
-                  <p> ngày đặt : <span><?= $fetch_orders['placed_on']; ?></span> </p>
-                  <p> tên : <span><?= $fetch_orders['name']; ?></span> </p>
-                  <p> email : <span><?= $fetch_orders['email']; ?></span> </p>
-                  <p> số điện thoại : <span><?= $fetch_orders['number']; ?></span> </p>
-                  <p> địa chỉ : <span><?= $fetch_orders['address']; ?></span> </p>
-                  <p> tổng sản phẩm : <span><?= $fetch_orders['total_products']; ?></span> </p>
-                  <p> tổng tiền : <span>$<?= $fetch_orders['total_price']; ?>vnđ</span> </p>
-                  <p> phương thức thanh toán : <span><?= $fetch_orders['method']; ?></span> </p>
+                  <p> User id : <span><?= $fetch_orders['user_id']; ?></span> </p>
+                  <p> Ngày đặt : <span><?= $fetch_orders['placed_on']; ?></span> </p>
+                  <p> Tên : <span><?= $fetch_orders['name']; ?></span> </p>
+                  <p> Email : <span><?= $fetch_orders['email']; ?></span> </p>
+                  <p> Số điện thoại : <span><?= $fetch_orders['number']; ?></span> </p>
+                  <p> Địa chỉ : <span><?= $fetch_orders['address']; ?></span> </p>
+                  <p> Tổng sản phẩm : <span><?= $fetch_orders['total_products']; ?></span> </p>
+                  <p> Tổng tiền : <span>$<?= $fetch_orders['total_price']; ?>vnđ</span> </p>
+                  <p> Phương thức thanh toán : <span><?= $fetch_orders['method']; ?></span> </p>
+                  <?php if (isset($fetch_orders['transaction_id'])) {
+                  ?>
+                     <p>Mã giao dịch: <?= $fetch_orders['transaction_id'] ?></p>
+                  <?php
+                  } ?>
                   <!-- pending -> paid -> completed -->
                   <form action="" method="POST">
                      <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
