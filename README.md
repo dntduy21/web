@@ -22,7 +22,7 @@ Mở công cụ quản lý cơ sở dữ liệu (ví dụ: phpMyAdmin, MySQL Wor
 
 ### 3. Nhập dữ liệu mẫu
 Sử dụng công cụ quản lý cơ sở dữ liệu để chạy file SQL sau:  
-```plaintext
+plaintext
 /clothes/web/1/clothes_db.sql
 
 Sau khi start các service MySQL, Apache hãy mở công cụ quản lý cơ sở dữ liệu và tạo 1 db là clothes_db
