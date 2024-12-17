@@ -34,10 +34,9 @@ if (isset($_POST['submit'])) {
       } else {
          $pattern = "/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$/";
 
-         if(!preg_match($pattern, $pass)){
+         if (!preg_match($pattern, $pass)) {
             $message[] = "Mật khẩu phải có ít nhất 8 ký tự, trong đó ít nhất 1 ký tự số, 1 ký tự thường,1 ký tự hoa";
-         }
-         else if ($pass != $cpass) {
+         } else if ($pass != $cpass) {
             $message[] = 'Mật khẩu không khớp!';
          } else {
             $insert_user = $conn->prepare("INSERT INTO `users` (name, email, number, password, address) VALUES (?, ?, ?, ?, ?)");
@@ -84,12 +83,12 @@ if (isset($_POST['submit'])) {
 
       <form action="" method="post">
          <h3>Đăng ký ngay</h3>
-         <input type="text" name="name" required placeholder="Nhập tên của bạn" class="box" maxlength="50">
-         <input type="email" name="email" required placeholder="Nhập email của bạn" class="box" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
-         <input type="number" name="number" required placeholder="Nhập số điện thoại của bạn" class="box" min="0" max="9999999999" maxlength="10">
+         <input type="text" name="name" required placeholder="Nhập tên của bạn" class="box" maxlength="50" value="<?= isset($name) ? htmlspecialchars($name) : ''; ?>">
+         <input type="email" name="email" required placeholder="Nhập email của bạn" class="box" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')" value="<?= isset($email) ? htmlspecialchars($email) : ''; ?>">
+         <input type="text" name="number" required placeholder="Nhập số điện thoại của bạn" class="box" minlength="10" maxlength="10" value="<?= isset($number) ? htmlspecialchars($number) : ''; ?>">
          <input type="password" name="pass" required placeholder="Nhập mật khẩu của bạn" class="box" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
          <input type="password" name="cpass" required placeholder="Xác nhận mật khẩu của bạn" class="box" maxlength="50" oninput="this.value = this.value.replace(/\s/g, '')">
-         <input type="text" name="address" required placeholder="Nhập địa chỉ của bạn" class="box" maxlength="100">
+         <input type="text" name="address" required placeholder="Nhập địa chỉ của bạn" class="box" maxlength="100" value="<?= isset($address) ? htmlspecialchars($address) : ''; ?>">
          <input type="submit" value="Đăng ký ngay" name="submit" class="btn">
          <p>Bạn đã có tài khoản? <a href="login.php">Đăng nhập ngay</a></p>
       </form>

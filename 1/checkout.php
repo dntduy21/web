@@ -48,6 +48,9 @@ if (isset($_POST['submit'])) {
          if ($method === "VNPAY") {
             header("Location: /clothes/web/1/vnpay.php?order_id={$order_id}&amount={$total_price}");
             exit();
+         } else {
+            header('Location: /clothes/web/1/orders.php?msg=Đặt hàng thành công');
+            exit();
          }
       }
    } else {
