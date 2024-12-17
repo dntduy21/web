@@ -46,10 +46,14 @@ if (isset($_POST['submit'])) {
 
          $message[] = "Mã đơn hàng mới là: " . $order_id;
          if ($method === "VNPAY") {
-            header("Location: /clothes/web/1/vnpay.php?order_id={$order_id}&amount={$total_price}");
+            // header("Location: /clothes/web/1/vnpay.php?order_id={$order_id}&amount={$total_price}");
+            //Trên host
+            header("Location: /clothes/vnpay.php?order_id={$order_id}&amount={$total_price}");
             exit();
          } else {
-            header('Location: /clothes/web/1/orders.php?msg=Đặt hàng thành công');
+            //Trên host
+            header("Location: /clothes/orders.php?msg=Đặt hàng thành công");
+            // header('Location: /clothes/web/1/orders.php?msg=Đặt hàng thành công');
             exit();
          }
       }

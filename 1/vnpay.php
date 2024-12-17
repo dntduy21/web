@@ -3,14 +3,15 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-$vnp_Returnurl = "http://localhost/clothes/web/1/vnpay_return.php";
+$vnp_Returnurl = "doanthuchanhphp.byethost24.com/clothes/vnpay_return.php";
+// $vnp_Returnurl = "http://localhost/clothes/web/1/vnpay_return.php";
 $vnp_TmnCode = "1HVW6E51"; //Mã website tại VNPAY 
 $vnp_HashSecret = "K7WMMCXE1NEAA8LVDETO4ANCWZOPASIU"; //Chuỗi bí mật
 
 $vnp_TxnRef = $_GET['order_id'];
 $vnp_OrderInfo = "Thanh toán ";
 $vnp_OrderType = 200000;
-$vnp_Amount = $_GET['amount']*100;
+$vnp_Amount = $_GET['amount'] * 100;
 $vnp_Locale = 'vn';
 $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
 //Add Params of 2.0.1 Version
