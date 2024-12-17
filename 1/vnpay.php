@@ -3,7 +3,7 @@ error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 
 $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-$vnp_Returnurl = "doanthuchanhphp.byethost24.com/clothes/vnpay_return.php";
+$vnp_Returnurl = "http://doanthuchanhphp.byethost24.com/clothes/vnpay_return.php";
 // $vnp_Returnurl = "http://localhost/clothes/web/1/vnpay_return.php";
 $vnp_TmnCode = "1HVW6E51"; //Mã website tại VNPAY 
 $vnp_HashSecret = "K7WMMCXE1NEAA8LVDETO4ANCWZOPASIU"; //Chuỗi bí mật
