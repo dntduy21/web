@@ -13,14 +13,16 @@ if (isset($_SESSION['user_id'])) {
 if (isset($_POST['send'])) {
 
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
+   $name = filter_var($name, FILTER_VALIDATE_EMAIL);
    $email = $_POST['email'];
    $email = filter_var($email, FILTER_SANITIZE_STRING);
    $number = $_POST['number'];
    $number = filter_var($number, FILTER_SANITIZE_STRING);
    $msg = $_POST['msg'];
    $msg = filter_var($msg, FILTER_SANITIZE_STRING);
-
+   if (!preg_match('/^\d{10}$/', $number)) {
+      $message[]= "Số điện thoại không hợp lệ";
+   }
    $select_message = $conn->prepare("SELECT * FROM `messages` WHERE name = ? AND email = ? AND number = ? AND message = ?");
    $select_message->execute([$name, $email, $number, $msg]);
 
@@ -77,7 +79,7 @@ if (isset($_POST['send'])) {
          <form action="" method="post">
             <h3>Hãy nói với chúng tôi điều gì đó!</h3>
             <input type="text" name="name" maxlength="50" class="box" placeholder="Nhập tên" required>
-            <input type="number" name="number" min="1000000000" max="9999999999" class="box" placeholder="Nhập số điện thoại" required maxlength="10">
+            <input type="text" name="number" minlength="10" maxlength="10" class="box" placeholder="Nhập số điện thoại" required maxlength="10">
             <input type="email" name="email" maxlength="50" class="box" placeholder="Nhập email" required>
             <textarea name="msg" class="box" required placeholder="Nhập tin nhắn" maxlength="500" cols="30" rows="10"></textarea>
             <input type="submit" value="Gửi tin nhắn" name="send" class="btn">

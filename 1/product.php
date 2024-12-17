@@ -67,7 +67,7 @@ include 'components/add_cart.php';
                   <a href="category.php?category=<?= $product['category']; ?>" class="cat"><?= $product['category']; ?></a>
                   <div class="name"><?= $product['name']; ?></div>
                   <div class="flex">
-                     <div class="price"><?= $product['price']; ?><span>vnd</span></div>
+                     <div class="price"><?= $product['price']; ?><span>vnđ</span></div>
                      <input type="number" name="qty" class="qty" min="1" max="99" value="1" maxlength="2">
                   </div>
                </form>

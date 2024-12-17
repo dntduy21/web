@@ -38,6 +38,8 @@ if (isset($_POST['submit'])) {
             $message[] = "Mật khẩu phải có ít nhất 8 ký tự, trong đó ít nhất 1 ký tự số, 1 ký tự thường,1 ký tự hoa";
          } else if ($pass != $cpass) {
             $message[] = 'Mật khẩu không khớp!';
+         } else if (!preg_match('/^\d{10}$/', $number)) {
+            $message[] = "Số điện thoại không hợp lệ";
          } else {
             $insert_user = $conn->prepare("INSERT INTO `users` (name, email, number, password, address) VALUES (?, ?, ?, ?, ?)");
             $insert_user->execute([$name, $email, $number, sha1($pass), $address]);
