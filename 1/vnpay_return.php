@@ -57,7 +57,7 @@ try {
         $stmt->execute([$orderId]);
         $order = $stmt->fetch();
         if ($order != NULL) {
-            if($vnp_ResponseCode !== "00"){
+            if ($vnp_ResponseCode !== "00") {
                 $error_codes = [
                     "00" => "Giao dịch thành công",
                     "07" => "Trừ tiền thành công. Giao dịch bị nghi ngờ (liên quan tới lừa đảo, giao dịch bất thường).",
@@ -75,13 +75,11 @@ try {
                 ];
                 //xử lý mã lỗi
                 $message = $error_codes[$vnp_ResponseCode];
-
-            }
-            else if ($order["total_price"] == $vnp_Amount) //Kiểm tra số tiền thanh toán của giao dịch: giả sử số tiền
+            } else if ($order["total_price"] == $vnp_Amount) //Kiểm tra số tiền thanh toán của giao dịch: giả sử số tiền
             {
                 if ($order["payment_status"] == "pending") {
                     $stmtUpdate = $conn->prepare("UPDATE `orders` SET `payment_status` = 'paid', `transaction_id` = ? WHERE id = ?");
-                    $stmtUpdate->execute([$vnpTranId  ,$orderId]);
+                    $stmtUpdate->execute([$vnpTranId, $orderId]);
                     $message = "Thanh toán thành công";
                     $returnData['RspCode'] = '00';
                     $returnData['Message'] = 'Confirm Success';
@@ -112,5 +110,7 @@ try {
 }
 //Trả lại VNPAY theo định dạng JSON
 echo json_encode($returnData);
-header("Location: /clothes/web/1/orders.php?msg=$message");
+//trên host
+header("Location: /clothes/orders.php?msg=$message");
+// header("Location: /clothes/web/1/orders.php?msg=$message");
 exit();
