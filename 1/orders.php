@@ -52,10 +52,10 @@ if (isset($_GET['msg']) && $_GET['msg'] !== "") {
          if ($user_id == '') {
             echo '<p class="empty">Vui lòng đăng nhập để xem đơn hàng của bạn</p>';
          } else {
-            $select_orders = $conn->prepare("SELECT * FROM `orders` WHERE user_id = ?");
+            $select_orders = $conn->prepare("SELECT * FROM `orders` WHERE user_id = ? order by placed_on desc");
             $select_orders->execute([$user_id]);
             if ($select_orders->rowCount() > 0) {
-               $fetch_orders_list = $select_orders->fetchAll(PDO::FETCH_ASSOC); 
+               $fetch_orders_list = $select_orders->fetchAll(PDO::FETCH_ASSOC);
                foreach ($fetch_orders_list as $fetch_orders) {
          ?>
                   <div class="box">
